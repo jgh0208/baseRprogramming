@@ -1,0 +1,46 @@
+A <- sample(1:9,size = 4)
+
+cond <- c(1,4,5,3)
+ba <- cond %in% A
+st <- cond == A  
+bs <- ba & st
+if(all(st)){
+  "correct!!"  
+} else if(all(st == F)){
+  v <- "No Strike."
+} else if(any(bs)){
+  N <- as.numeric(bs)
+  sum(N)
+  v <- paste(sum(N),"strike!!")
+}
+  BA <- as.list(ba)
+  ST <- as.list(st)
+  if(BA[[1]]){
+    ifelse(ST[[1]]==F,p <- 1,p <- 0)
+  } else {
+    p <- 0
+  }
+    if(BA[[2]]){
+      ifelse(ST[[2]]==F,l <- 1,l <- 0)
+    } else {
+      l <- 0
+    }
+    if(BA[[3]]){
+      ifelse(ST[[3]]==F,o <- 1,o <- 0)
+    } else {
+      o <- 0
+    }
+    if(BA[[4]]){
+      ifelse(ST[[4]]==F,u <- 1,u <- 0)
+    } else {
+      u <- 0
+    }
+    Q <- p+l+o+u
+    Q == 0
+    if(Q == 0){
+      m <- "NO Ball."
+    } else{
+      m <- paste(Q,"Ball!!")
+    }
+    paste(v,m)
+    

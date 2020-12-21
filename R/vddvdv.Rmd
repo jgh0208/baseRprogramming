@@ -1,0 +1,80 @@
+---
+title: "기초R programming"
+author: "wjdrudgus"
+date: "2018년 6월 6일"
+output: html_document
+---
+
+```{r , echo=FALSE}
+A <- sample(1:9,size = 4)
+play <- function(cond){
+ cond
+ ba <- cond %in% A
+ st <- cond == A  
+ bs <- ba & st
+
+if(all(st)){
+  v <- "correct!!"
+} else if(all(st == F)){
+  v <- "No Strike."
+} 
+else if(any(bs)){
+  N <- as.numeric(bs)
+  sum(N)
+  v <- paste(sum(N),"strike!!")
+}
+BA <- as.list(ba)
+ST <- as.list(st)
+if(BA[[1]]){
+  ifelse(ST[[1]]==F,p <- 1,p <- 0)
+} else {
+  p <- 0
+}
+if(BA[[2]]){
+  ifelse(ST[[2]]==F,l <- 1,l <- 0)
+} else {
+  l <- 0
+}
+if(BA[[3]]){
+  ifelse(ST[[3]]==F,o <- 1,o <- 0)
+} else {
+  o <- 0
+}
+if(BA[[4]]){
+  ifelse(ST[[4]]==F,u <- 1,u <- 0)
+} else {
+  u <- 0
+}
+Q <- p+l+o+u
+if(Q == 0){
+  m <- "NO Ball."
+} else{
+  m <- paste(Q,"Ball!!")
+}
+if(all(st)){
+  s <- " "
+  m <- " "
+} else {
+  s <- "Try Again..."
+}
+cat( v,m,"\n",s)
+}
+
+play(cond = c(1,2,3,4))
+play(cond = c(5,3,8,2))
+play(cond = c(3,7,9,2))
+play(cond = c(6,7,4,2))
+play(cond = c(8,4,9,5))
+play(cond = c(2,4,9,8))
+play(cond = c(9,4,7,5))
+play(cond = c(5,8,3,2))
+play(cond = c(8,5,3,2))
+play(cond = c(5,3,2,8))
+play(cond = c(5,3,8,2))
+play(cond = c(2,5,8,3))
+play(cond = c(3,5,8,2))
+play(cond = c(3,4,8,6))
+
+
+```
+
